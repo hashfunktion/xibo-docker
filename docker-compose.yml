@@ -4,7 +4,7 @@ services:
     cms-db:
         image: mysql:5.6
         volumes:
-            - "./shared/db:/var/lib/mysql:Z"
+            - "/var/lib/mysql:Z"
         environment:
             - MYSQL_DATABASE=cms
             - MYSQL_USER=cms
@@ -22,12 +22,12 @@ services:
     cms-web:
         image: xibosignage/xibo-cms:release-2.3.6
         volumes:
-            - "./shared/cms/custom:/var/www/cms/custom:Z"
-            - "./shared/backup:/var/www/backup:Z"
-            - "./shared/cms/web/theme/custom:/var/www/cms/web/theme/custom:Z"
-            - "./shared/cms/library:/var/www/cms/library:Z"
-            - "./shared/cms/web/userscripts:/var/www/cms/web/userscripts:Z"
-            - "./shared/cms/ca-certs:/var/www/cms/ca-certs:Z"
+            - "/var/www/cms/custom:Z"
+            - "/var/www/backup:Z"
+            - "/var/www/cms/web/theme/custom:Z"
+            - "/var/www/cms/library:Z"
+            - "/var/www/cms/web/userscripts:Z"
+            - "/var/www/cms/ca-certs:Z"
         restart: always
         links:
             - cms-db:mysql
